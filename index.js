@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const moment = require('moment');
 const path = require('path');
 const ejs = require('ejs');
@@ -122,8 +124,11 @@ async function readFile(filename, encode = 'utf8') {
     });
 }
 
-async function init(output = 'pdf', jsonPath) {
+async function init(jsonPath, output = 'pdf') {
     const jsonContent = await readFile(jsonPath);
+
+    process.chdir(path.dirname(jsonPath));
+
     const data = JSON.parse(jsonContent);
     const transformed = await processData(data);
     const filename = await mktemp(`--suffix=.${output}`);
@@ -141,7 +146,7 @@ async function init(output = 'pdf', jsonPath) {
 }
 
 if (require.main === module) {
-    init('pdf', './sample-data.json')
+    init(process.argv[2], process.argv[3])
         .then(console.log.bind(console))
         .catch(console.error.bind(console))
 }
