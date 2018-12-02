@@ -28,7 +28,7 @@ Basado en formato de [simple-html-invoice-template](https://github.com/sparksuit
               "description":  "Instalacion de instancia ec2",
               "qty": 1,
               "value": 600
-            },,
+            },
             {
               "description": "Adelanto",
               "qty": 1,

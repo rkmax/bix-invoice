@@ -1,6 +1,6 @@
 {
   "name": "bix-invoice",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,10 +14,13 @@
     "email": "jreyes@bixlabs.com",
     "name": "Julian Reyes Escrigas"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "ejs": "^2.6.1",
     "html-pdf": "^2.2.0",
     "moment": "^2.22.2"
+  },
+  "repository": {
+    "url": "https://github.com/rkmax/bix-invoice"
   }
 }
