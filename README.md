@@ -41,8 +41,8 @@ Basado en formato de [simple-html-invoice-template](https://github.com/sparksuit
           }
         }
         
-3. Ejecuta `$ simple-invoice ruta-archivo.json`
+3. Ejecuta `$ bix-invoice ruta-archivo.json`
 
 4. Formato, por defecto genera un PDF pero tambien es posible especificar HTML como formato de salida
 
-    $ simple-invoice ruta-archivo.json html    
+    $ bix-invoice ruta-archivo.json html    
