@@ -1,6 +1,6 @@
 {
   "name": "bix-invoice",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "Simple invoice generator",
   "main": "index.js",
   "scripts": {
@@ -18,16 +18,16 @@
   "license": "MIT",
   "dependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.16.4",
     "html-pdf": "^2.2.0",
     "moment": "^2.22.2",
-    "written-number": "^0.9.1"
+    "written-number": "^0.9.1",
+    "tcomb": "^3.2.29"
   },
   "repository": {
     "url": "https://github.com/rkmax/bix-invoice"
   },
   "devDependencies": {
-    "nodemon": "^1.19.0",
-    "tcomb": "^3.2.29"
+    "express": "^4.16.4",
+    "nodemon": "^1.19.0"
   }
 }
