@@ -1,0 +1,32 @@
+{
+  "header": {
+    "title": "Cuenta de cobro"
+  },
+  "items": [
+    {
+      "description":  "Licencia modulo de cuentas de cobro",
+      "qty": 1,
+      "value": 1500
+    }
+  ],
+  "recipient": {
+    "name": "Enterprise LLC",
+    "document": "RUT 123.456.7489"
+  },
+  "sender": {
+    "name": "Julian Reyes",
+    "document": "C.C. 1.890.234.567"
+  },
+  "signature": {
+    "file": "/path/to/my-signature.png"
+  },
+  "data": {
+    "left": [
+      "<br>",
+      "<strong>Datos de consignación</strong>",
+      "<strong>Direccion</strong>: CL 100 44 - 10, Barranquilla Colombia",
+      "<strong>Telefono</strong>: (+57) 300 555 5515",
+      "<strong>Cuenta de Ahorros</strong>: COLOCOBM 123-123456-78"
+    ]
+  }
+}

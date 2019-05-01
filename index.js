@@ -1,17 +1,23 @@
 #!/usr/bin/env node
 
-const moment = require('moment');
 const path = require('path');
 const ejs = require('ejs');
 const pdf = require('html-pdf');
 const os = require('os');
 const fs = require('fs');
-
-moment.locale('es');
+const writtenNumber = require('written-number');
+const fromJSON = require('tcomb/lib/fromJSON');
+const {Input, ProcessedData} = require('./model');
 
 const filters = {
     moneyClass: function(value) {
         return value < 0 ? 'money neg' : 'money';
+    },
+    writtenNumber: function(value, lang = 'es') {
+        return writtenNumber(value, {lang});
+    },
+    moneyFormat: function(value) {
+        return Math.abs(value).toLocaleString('es-US', {maximumFractionDigits: 2});
     }
 };
 const ejsOptions = {
@@ -40,38 +46,27 @@ async function cmd(opts) {
 }
 
 async function processData(data) {
-    const processed = {
-        info: data.info,
-        items: [],
-        total: 0,
-        header: data.header,
-        signature: {},
-        date: moment().format('LL')
+    const input = fromJSON(data, Input);
+    const processedData = {
+        processedItems: [],
+        total: 0
     };
 
-    data.items.forEach(item => {
-        const value = Number(item.value);
-        const qty = Number(item.qty);
+    input.items.forEach(item => {
+        const {qty, value, description} = item;
         const total = value * qty;
-        processed.items.push({
-            description: item.description,
-            qty,
-            value: value.toFixed(2),
-            total: total.toFixed(2)
-        });
-        processed.total += total;
+        processedData.processedItems.push({description, qty, value, total});
+        processedData.total += total;
     });
 
-    if (data.signature) {
-        processed.signature.line = data.signature.line;
-        if (data.signature.file) {
-            const base64 = await readFile(data.signature.file, 'base64')
-            processed.signature.file = `data:image/png;base64,${base64}`;
-        }
-
+    if (input.signature) {
+        const base64 = await readFile(input.signature.file, 'base64');
+        processedData.signatureBase64 = `data:image/png;base64,${base64}`;
     }
 
-    return processed;
+    Object.assign(processedData, JSON.parse(JSON.stringify(input)));
+
+    return fromJSON(processedData, ProcessedData);
 }
 
 async function render(templateName, data = {}) {
@@ -131,8 +126,19 @@ async function init(jsonPath, output = 'pdf') {
 
     const data = JSON.parse(jsonContent);
     const transformed = await processData(data);
-    const filename = await mktemp(`--suffix=.${output}`);
     const html = await render('invoice.html.ejs', {data: transformed});
+    switch (output) {
+        case 'pdf':
+        case 'html':
+            await writeTo(html, output);
+            break;
+        case 'out':
+            return html;
+    }
+}
+
+async function writeTo(html, output) {
+    const filename = await mktemp(`--suffix=.${output}`);
     switch (output) {
         case 'pdf':
             await write(html, filename);
@@ -150,3 +156,5 @@ if (require.main === module) {
         .then(console.log.bind(console))
         .catch(console.error.bind(console))
 }
+
+module.exports = init;

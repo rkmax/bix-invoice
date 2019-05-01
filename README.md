@@ -8,40 +8,44 @@ Basado en formato de [simple-html-invoice-template](https://github.com/sparksuit
 
 ## Como usarlo
 
-1. instala el modulo globalmente `npm i -g bix-invoice`
+1. instala el modulo globalmente `npm i -g bix-invoice`, puede omitir este paso si usas npx
 2. Crea un archivo .json con la información, ej
 
         {
           "header": {
-            "title": "Cuenta de cobro", // Opcional
-            "left": [ // Opcional
-              "<strong>Nombre</strong>: Julian Reyes",              
-              "<strong>Telefono</strong>: (+57) 555 123 4567"
-            ],
-            "right": [ // Opcional
-              "<strong>Paypal</strong>",
-              "julian.reyes.escrigas@gmail.com"
-            ]
+            "title": "Cuenta de cobro"
           },
-          "items": [ // Requerido al menos un item
+          "items": [
             {
-              "description":  "Instalacion de instancia ec2",
+              "description":  "Licencia modulo de cuentas de cobro",
               "qty": 1,
-              "value": 600
-            },
-            {
-              "description": "Adelanto",
-              "qty": 1,
-              "value": -300
+              "value": 1500
             }
           ],
-          "signature": {
-            "line": "Julian Reyess", // Opcional
-            "file": "./sample-signature.png" // Opcional, absoluto o relativo al .json
+          "recipient": {
+            "name": "Enterprise LLC",
+            "document": "RUT 123.456.7489" //optional
+          },
+          "sender": {
+            "name": "Julian Reyes",
+            "document": "C.C. 1.890.234.567" // optional
+          },
+          "signature": { // optional
+            "file": "/path/to/my-signature.png"
+          },
+          "data": { // optional
+            "left": [
+              "<br>",
+              "<strong>Datos de consignación</strong>",
+              "<strong>Direccion</strong>: CL 100 44 - 10, Barranquilla Colombia",
+              "<strong>Telefono</strong>: (+57) 300 555 5515",
+              "<strong>Cuenta de Ahorros</strong>: COLOCOBM 123-123456-78"
+            ]
           }
         }
+
         
-3. Ejecuta `$ bix-invoice ruta-archivo.json`
+3. Ejecuta `$ bix-invoice ruta-archivo.json` o `npx bix-invoice ruta-archivo.json`
 
 4. Formato, por defecto genera un PDF pero tambien es posible especificar HTML como formato de salida
 
