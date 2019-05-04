@@ -18,7 +18,7 @@ const modelHeader = tcomb.struct(
 const modelItem = tcomb.struct(
     {
         description: tcomb.String,
-        qty: tcomb.Integer,
+        qty: tcomb.Any,
         value: tcomb.Number
     },
     {
