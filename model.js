@@ -19,7 +19,7 @@ const modelItem = tcomb.struct(
     {
         description: tcomb.String,
         qty: tcomb.Any,
-        value: tcomb.Number
+        value: tcomb.Any
     },
     {
         name: 'Item'
