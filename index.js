@@ -54,7 +54,7 @@ async function processData(data) {
 
     input.items.forEach(item => {
         const {qty, value, description} = item;
-        const total = value * qty;
+        const total = Math.ceil(value * qty);
         processedData.processedItems.push({description, qty, value, total});
         processedData.total += total;
     });
