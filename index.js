@@ -17,7 +17,10 @@ const filters = {
         return writtenNumber(value, {lang});
     },
     moneyFormat: function(value) {
-        return Math.abs(value).toLocaleString('es-US', {maximumFractionDigits: 2});
+        return Math.abs(value).toLocaleString('es-US', {maximumFractionDigits: 2, minimumFractionDigits: 2});
+    },
+    totalFormat: function (value) {
+        return Math.abs(value).toLocaleString('es-US', {maximumFractionDigits: 0});
     }
 };
 const ejsOptions = {
@@ -54,7 +57,7 @@ async function processData(data) {
 
     input.items.forEach(item => {
         const {qty, value, description} = item;
-        const total = Math.ceil(value * qty);
+        const total = value * qty;
         processedData.processedItems.push({description, qty, value, total});
         processedData.total += total;
     });

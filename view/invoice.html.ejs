@@ -147,7 +147,7 @@
         <span class="written-number">
             <%= filters.writtenNumber(data.total) %>
         </span> dolares
-        (USD $ <%= filters.moneyFormat(data.total) -%>)
+        (USD $ <%= filters.totalFormat(data.total) -%>)
     </h3>
 
     <p class="info-block">Por concepto de: </p>
@@ -169,7 +169,7 @@
 
         <tr class="total">
             <td colspan="3" style="text-align: right">Total</td>
-            <td class="<%= filters.moneyClass(data.total) %>"><%= filters.moneyFormat(data.total) -%></td>
+            <td class="<%= filters.moneyClass(data.total) %>"><%= filters.totalFormat(data.total) -%></td>
         </tr>
     </table>
 
