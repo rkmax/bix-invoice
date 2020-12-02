@@ -18,7 +18,7 @@
     "document": "C.C. 1.890.234.567"
   },
   "signature": {
-    "file": "/path/to/my-signature.png"
+    "file": "./signature.jpg"
   },
   "data": {
     "left": [
