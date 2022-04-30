@@ -8,7 +8,7 @@
     "start": "nodemon server.js"
   },
   "bin": {
-    "bix-invoice": "./index.js"
+    "bix-invoice": "./src/index.js"
   },
   "keywords": [],
   "author": {
