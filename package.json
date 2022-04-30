@@ -17,17 +17,17 @@
   },
   "license": "MIT",
   "dependencies": {
-    "ejs": "^3.1.5",
-    "html-pdf": "^2.2.0",
-    "moment": "^2.29.1",
+    "ejs": "^3.1.7",
+    "html-pdf": "^3.0.1",
+    "moment": "^2.29.3",
     "tcomb": "^3.2.29",
-    "written-number": "^0.9.1"
+    "written-number": "^0.11.1"
   },
   "repository": {
     "url": "https://github.com/rkmax/bix-invoice"
   },
   "devDependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.6"
+    "express": "^4.18.1",
+    "nodemon": "^2.0.16"
   }
 }
