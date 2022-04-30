@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.5",
-    "html-pdf": "^2.2.0",
+    "html-pdf": "^3.0.1",
     "moment": "^2.29.1",
     "tcomb": "^3.2.29",
     "written-number": "^0.9.1"
