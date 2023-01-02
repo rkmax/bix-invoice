@@ -1,6 +1,6 @@
 {
   "name": "bix-invoice",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Simple invoice generator",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "nodemon server.js"
   },
   "bin": {
-    "bix-invoice": "./src/index.js"
+    "bix-invoice": "OPENSSL_CONF=$INIT_CWD/openssl.conf $INIT_CWD/index.js"
   },
   "keywords": [],
   "author": {
@@ -20,6 +20,7 @@
     "ejs": "^3.1.7",
     "html-pdf": "^3.0.1",
     "moment": "^2.29.3",
+    "phantomjs-prebuilt": "^2.1.16",
     "tcomb": "^3.2.29",
     "written-number": "^0.11.1"
   },
