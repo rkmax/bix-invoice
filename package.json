@@ -1,6 +1,6 @@
 {
   "name": "bix-invoice",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Simple invoice generator",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "nodemon server.js"
   },
   "bin": {
-    "bix-invoice": "OPENSSL_CONF=$INIT_CWD/openssl.conf $INIT_CWD/index.js"
+    "bix-invoice": "src/index.js"
   },
   "keywords": [],
   "author": {

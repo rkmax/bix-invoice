@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
 const path = require('path');
+
+process.env.OPENSSL_CONF = path.join(__dirname, '..', 'openssl.conf');
+
+
 const ejs = require('ejs');
 const pdf = require('html-pdf');
 const os = require('os');
