@@ -145,7 +145,9 @@ async function init(jsonPath, output = 'pdf') {
 }
 
 async function writeTo(html, output) {
-    const filename = await mktemp(`--suffix=.${output}`);
+    const tmpPrefix = await mktemp('bix-invoice.XXXXXX');
+    const filename = `${tmpPrefix}.${output}`;
+
     switch (output) {
         case 'pdf':
             await write(html, filename);
